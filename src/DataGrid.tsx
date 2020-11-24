@@ -298,6 +298,11 @@ function DataGrid<R, SR>({
         behavior: 'smooth'
       });
     },
+    scrollTo(options: ScrollToOptions) {
+      const { current } = gridRef;
+      if (!current) return;
+      current.scrollTo(options);
+    },
     selectCell
   }));
 
