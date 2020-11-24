@@ -60,6 +60,7 @@ type DefaultColumnOptions<R, SR> = Pick<Column<R, SR>,
 export interface DataGridHandle {
   scrollToColumn: (colIdx: number) => void;
   scrollToRow: (rowIdx: number) => void;
+  scrollTo: (options: ScrollToOptions) => void;
   selectCell: (position: Position, openEditor?: boolean) => void;
 }
 
