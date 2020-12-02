@@ -77,6 +77,8 @@ export interface FormatterProps<TRow = any, TSummaryRow = any> {
   column: CalculatedColumn<TRow, TSummaryRow>;
   row: TRow;
   isCellSelected: boolean;
+  isCellInColumnSelected: boolean;
+  isCellInRowSelected: boolean;
   isRowSelected: boolean;
   onRowSelectionChange: (checked: boolean, isShiftClick: boolean) => void;
   onRowChange: (row: Readonly<TRow>) => void;
@@ -124,6 +126,7 @@ export interface HeaderRendererProps<TRow, TSummaryRow = unknown> {
 
 interface SelectedCellPropsBase {
   idx: number;
+  rowIdx: number;
   onKeyDown: (event: React.KeyboardEvent<HTMLDivElement>) => void;
 }
 
@@ -145,6 +148,8 @@ export interface CellRendererProps<TRow, TSummaryRow = unknown> extends Omit<Rea
   isCopied: boolean;
   isDraggedOver: boolean;
   isCellSelected: boolean;
+  isCellInColumnSelected: boolean;
+  isCellInRowSelected: boolean;
   isRowSelected: boolean;
   dragHandleProps?: Pick<React.HTMLAttributes<HTMLDivElement>, 'onMouseDown' | 'onDoubleClick'>;
   onRowChange: (rowIdx: number, newRow: TRow) => void;

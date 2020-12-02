@@ -54,7 +54,9 @@ function Row<R, SR = unknown>({
       {...props}
     >
       {viewportColumns.map(column => {
-        const isCellSelected = selectedCellProps?.idx === column.idx;
+        const isCellSelected = selectedCellProps?.idx === column.idx && selectedCellProps?.rowIdx === rowIdx;
+        const isCellInRowSelected = selectedCellProps?.rowIdx === rowIdx;
+        const isCellInColumnSelected = selectedCellProps?.idx === column.idx;
         if (selectedCellProps?.mode === 'EDIT' && isCellSelected) {
           return (
             <EditCell<R, SR>
@@ -77,6 +79,8 @@ function Row<R, SR = unknown>({
             isCopied={copiedCellIdx === column.idx}
             isDraggedOver={draggedOverCellIdx === column.idx}
             isCellSelected={isCellSelected}
+            isCellInRowSelected={isCellInRowSelected}
+            isCellInColumnSelected={isCellInColumnSelected}
             isRowSelected={isRowSelected}
             dragHandleProps={isCellSelected ? (selectedCellProps as SelectedCellProps).dragHandleProps : undefined}
             onFocus={isCellSelected ? (selectedCellProps as SelectedCellProps).onFocus : undefined}

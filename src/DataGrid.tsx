@@ -769,13 +769,12 @@ function DataGrid<R, SR>({
     return isDraggedOver ? selectedPosition.idx : undefined;
   }
 
-  function getSelectedCellProps(rowIdx: number): SelectedCellProps | EditCellProps<R> | undefined {
-    if (selectedPosition.rowIdx !== rowIdx) return;
-
+  function getSelectedCellProps(): SelectedCellProps | EditCellProps<R> | undefined {
     if (selectedPosition.mode === 'EDIT') {
       return {
         mode: 'EDIT',
         idx: selectedPosition.idx,
+        rowIdx: selectedPosition.rowIdx,
         onKeyDown: handleKeyDown,
         editorProps: {
           editorPortalTarget,
@@ -790,6 +789,7 @@ function DataGrid<R, SR>({
     return {
       mode: 'SELECT',
       idx: selectedPosition.idx,
+      rowIdx: selectedPosition.rowIdx,
       onFocus: handleFocus,
       onKeyDown: handleKeyDown,
       dragHandleProps: enableCellDragAndDrop && isCellEditable(selectedPosition)
@@ -856,7 +856,7 @@ function DataGrid<R, SR>({
           copiedCellIdx={copiedCell !== null && copiedCell.row === row ? columns.findIndex(c => c.key === copiedCell.columnKey) : undefined}
           draggedOverCellIdx={getDraggedOverCellIdx(rowIdx)}
           setDraggedOverRowIdx={isDragging ? setDraggedOverRowIdx : undefined}
-          selectedCellProps={getSelectedCellProps(rowIdx)}
+          selectedCellProps={getSelectedCellProps()}
           onRowChange={handleFormatterRowChangeWrapper}
           selectCell={selectCellWrapper}
           selectRow={selectRowWrapper}

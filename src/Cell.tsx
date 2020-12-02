@@ -9,6 +9,8 @@ function Cell<R, SR>({
   className,
   column,
   isCellSelected,
+  isCellInColumnSelected,
+  isCellInRowSelected,
   isCopied,
   isDraggedOver,
   isRowSelected,
@@ -88,6 +90,8 @@ function Cell<R, SR>({
             rowIdx={rowIdx}
             row={row}
             isCellSelected={isCellSelected}
+            isCellInRowSelected={isCellInRowSelected}
+            isCellInColumnSelected={isCellInColumnSelected}
             isRowSelected={isRowSelected}
             onRowSelectionChange={onRowSelectionChange}
             onRowChange={handleRowChange}
