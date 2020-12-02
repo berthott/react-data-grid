@@ -727,8 +727,7 @@ function DataGrid<R, SR>({
     if (selectedPosition.mode === 'EDIT') {
       const onNavigation = columns[selectedPosition.idx].editorOptions?.onNavigation ?? onEditorNavigation;
       if (!onNavigation(event)) return;
-      commitEditorChanges();
-      closeEditor();
+      handleCellInput(event);
     }
     const { key, shiftKey } = event;
     const ctrlKey = isCtrlKeyHeldDown(event);
@@ -748,7 +747,7 @@ function DataGrid<R, SR>({
     }
 
     // Do not allow focus to leave
-    //event.preventDefault();
+    event.preventDefault();
 
     nextPosition = getNextSelectedCellPosition<R, SR>({
       columns,
