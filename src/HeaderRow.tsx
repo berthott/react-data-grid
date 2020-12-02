@@ -1,7 +1,7 @@
 import { useCallback, memo } from 'react';
 
 import HeaderCell from './HeaderCell';
-import type { CalculatedColumn } from './types';
+import type { CalculatedColumn, EditCellProps, SelectedCellProps } from './types';
 import { assertIsValidKeyGetter } from './utils';
 import type { DataGridProps } from './DataGrid';
 
@@ -16,6 +16,7 @@ type SharedDataGridProps<R, SR> = Pick<DataGridProps<R, SR>,
 
 export interface HeaderRowProps<R, SR> extends SharedDataGridProps<R, SR> {
   columns: readonly CalculatedColumn<R, SR>[];
+  selectedCellProps?: EditCellProps<R> | SelectedCellProps;
   allRowsSelected: boolean;
   onColumnResize: (column: CalculatedColumn<R, SR>, width: number) => void;
 }
@@ -23,6 +24,7 @@ export interface HeaderRowProps<R, SR> extends SharedDataGridProps<R, SR> {
 function HeaderRow<R, SR>({
   columns,
   rows,
+  selectedCellProps,
   rowKeyGetter,
   onSelectedRowsChange,
   allRowsSelected,
@@ -53,10 +55,12 @@ function HeaderRow<R, SR>({
       className="rdg-header-row"
     >
       {columns.map(column => {
+        const isCellInColumnSelected = selectedCellProps?.idx === column.idx;
         return (
           <HeaderCell<R, SR>
             key={column.key}
             column={column}
+            isCellInColumnSelected={isCellInColumnSelected}
             onResize={onColumnResize}
             allRowsSelected={allRowsSelected}
             onAllRowsSelectionChange={handleAllRowsSelectionChange}

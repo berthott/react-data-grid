@@ -25,6 +25,7 @@ type SharedHeaderRowProps<R, SR> = Pick<HeaderRowProps<R, SR>,
 
 export interface HeaderCellProps<R, SR> extends SharedHeaderRowProps<R, SR> {
   column: CalculatedColumn<R, SR>;
+  isCellInColumnSelected: boolean;
   onResize: (column: CalculatedColumn<R, SR>, width: number) => void;
   onAllRowsSelectionChange: (checked: boolean) => void;
 }
@@ -33,6 +34,7 @@ export default function HeaderCell<R, SR>({
   column,
   onResize,
   allRowsSelected,
+  isCellInColumnSelected,
   onAllRowsSelectionChange,
   sortColumn,
   sortDirection,
@@ -80,6 +82,7 @@ export default function HeaderCell<R, SR>({
         <column.headerRenderer
           column={column}
           sortColumn={sortColumn}
+          isCellInColumnSelected={isCellInColumnSelected}
           sortDirection={sortDirection}
           onSort={onSort}
           allRowsSelected={allRowsSelected}

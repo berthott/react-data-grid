@@ -902,6 +902,7 @@ function DataGrid<R, SR>({
         rowKeyGetter={rowKeyGetter}
         rows={rawRows}
         columns={viewportColumns}
+        selectedCellProps={getSelectedCellProps()}
         onColumnResize={handleColumnResize}
         allRowsSelected={selectedRows?.size === rawRows.length}
         onSelectedRowsChange={onSelectedRowsChange}
