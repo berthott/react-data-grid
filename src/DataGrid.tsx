@@ -423,11 +423,12 @@ function DataGrid<R, SR>({
         setCopiedCell(null);
         closeEditor();
         return;
+      case 'Tab':
+        handleCellInput(event);
       case 'ArrowUp':
       case 'ArrowDown':
       case 'ArrowLeft':
       case 'ArrowRight':
-      case 'Tab':
       case 'Home':
       case 'End':
       case 'PageUp':
@@ -727,7 +728,6 @@ function DataGrid<R, SR>({
     if (selectedPosition.mode === 'EDIT') {
       const onNavigation = columns[selectedPosition.idx].editorOptions?.onNavigation ?? onEditorNavigation;
       if (!onNavigation(event)) return;
-      handleCellInput(event);
     }
     const { key, shiftKey } = event;
     const ctrlKey = isCtrlKeyHeldDown(event);
