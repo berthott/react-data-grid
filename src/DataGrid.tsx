@@ -423,12 +423,11 @@ function DataGrid<R, SR>({
         setCopiedCell(null);
         closeEditor();
         return;
-      case 'Tab':
-        handleCellInput(event);
       case 'ArrowUp':
       case 'ArrowDown':
       case 'ArrowLeft':
       case 'ArrowRight':
+      case 'Tab':
       case 'Home':
       case 'End':
       case 'PageUp':
