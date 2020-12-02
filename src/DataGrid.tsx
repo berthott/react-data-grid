@@ -748,7 +748,7 @@ function DataGrid<R, SR>({
     }
 
     // Do not allow focus to leave
-    event.preventDefault();
+    //event.preventDefault();
 
     nextPosition = getNextSelectedCellPosition<R, SR>({
       columns,
