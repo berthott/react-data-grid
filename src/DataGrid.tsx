@@ -727,6 +727,8 @@ function DataGrid<R, SR>({
     if (selectedPosition.mode === 'EDIT') {
       const onNavigation = columns[selectedPosition.idx].editorOptions?.onNavigation ?? onEditorNavigation;
       if (!onNavigation(event)) return;
+      commitEditorChanges();
+      closeEditor();
     }
     const { key, shiftKey } = event;
     const ctrlKey = isCtrlKeyHeldDown(event);
