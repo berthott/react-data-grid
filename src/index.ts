@@ -4,6 +4,7 @@ export { default as Cell } from './Cell';
 export { default as Row } from './Row';
 export * from './Columns';
 export * from './formatters';
+export * from './hooks';
 export { default as TextEditor } from './editors/TextEditor';
 export { default as SortableHeaderCell } from './headerCells/SortableHeaderCell';
 export type {
