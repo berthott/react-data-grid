@@ -1,6 +1,6 @@
 {
   "name": "react-data-grid",
-  "version": "7.0.0-canary.33",
+  "version": "7.0.0-canary.33.syspons-1.0.0",
   "license": "MIT",
   "description": "Excel-like grid component built with React, with editors, keyboard navigation, copy & paste, and the like",
   "keywords": [
@@ -37,7 +37,6 @@
     "start": "start-storybook --quiet --no-dll -p 6006",
     "build": "rollup --config --no-stdin",
     "postbuild": "node tools/buildStylesheets.js",
-    "prepare": "npm run build && tsc",
     "test": "jest",
     "test:watch": "jest --watch",
     "eslint": "eslint --ext js,ts,tsx --max-warnings 0 -f codeframe --cache --color src stories test tools",
